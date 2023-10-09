@@ -23,7 +23,8 @@ export function RootLayout({ pages, children }: RootLayoutProps) {
       <Container id={pages}>
         {children}
       </Container>
-      <Footer />
+      <br></br>
+      <Footer/>
     </div>
   );
 };

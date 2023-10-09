@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import HexagonTextBox from './canvas_shapes/hexagon_textbox';
 
 function Promises({}) {
     const delightfulQuality = "Our team is dedicated to delivering spotless results that exceed your expectations." +
@@ -15,44 +16,49 @@ function Promises({}) {
     
 
   return (
-    <Container className="pink-container">
-    <Row className="center-container item-padding">
-      <Col >
-        <h4>Delightful Quality</h4>
-        <div>
-          { delightfulQuality }
-        </div>
-      </Col>
-      <Col >
-        <h4>Trusted Professionals</h4>
-        <div>
-          { trustedProfessionals}
-        </div>
-      </Col>
-    </Row>
-    <Row className="center-container item-padding">
-      <Col >
-        <h4>Personalized Service</h4>
-        <div>
-          { personalizedService}
-        </div>
-      </Col>
-    </Row>
-    <Row className="center-container item-padding">
-      <Col >
-        <h4>Customer Satisfaction</h4>
-        <div>
-          { customerSatisfaction }
-        </div>
-      </Col>
-      <Col >
-        <h4>Building Relationships</h4>
-        <div>
-          { buildingRelationships }
-        </div>
-      </Col>
-    </Row>
-  </Container>
+    <Container>
+      <Row className="flex-center">
+        <Col lg={4} sm={1} xs={6}>
+          <HexagonTextBox
+            title="Delightful Quality"
+            text={delightfulQuality}
+            size={[60, 180]}
+          />
+        </Col>
+        <Col lg={4} sm={1} xs={6}>
+          <HexagonTextBox
+            title="Trusted Professionals"
+            text={trustedProfessionals}
+            size={[60, 180]}
+          />
+        </Col>
+      </Row>
+      <Row className="flex-center">
+        <Col lg={4} sm={1} xs={6}>
+          <HexagonTextBox
+            title="Personalized Service"
+            text={personalizedService}
+            size={[60, 180]}
+          />
+        </Col>
+      </Row>
+      <Row className="flex-center">
+        <Col lg={4} sm={1} xs={6}>
+          <HexagonTextBox
+            title="Customer Satisfaction"
+            text={customerSatisfaction}
+            size={[60, 180]}
+          />
+        </Col>
+        <Col lg={4} sm={1} xs={6}>
+          <HexagonTextBox
+            title="Building Relationships"
+            text={buildingRelationships}
+            size={[60, 180]}
+          />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
