@@ -1,0 +1,43 @@
+{
+  "name": "prinstinestl",
+  "version": "1.0.0",
+  "description": "Cleaning business website.",
+  "scripts": {
+    "start": "next start",
+    "static": "npx serve@latest out -l 80 out",
+    "dev": "next dev",
+    "dev-s": "next dev --experimental-https --port 85",
+    "build": "next build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ifTaylor/pristinestl.git"
+  },
+  "keywords": [
+    "cleaning",
+    "cleaning-service",
+    "janitorial",
+    "housekeeping"
+  ],
+  "author": "Taylor Turner",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.2",
+    "fs": "^0.0.1-security",
+    "html-context": "^1.0.6",
+    "https": "^1.0.0",
+    "path": "^0.12.7",
+    "sass": "^1.69.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.5.7",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "bootstrap": "^5.3.1",
+    "next": "^13.4.19",
+    "react": "18.2.0",
+    "react-bootstrap": "^2.6.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.2.2"
+  }
+}

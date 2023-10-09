@@ -1,0 +1,11 @@
+pink:
+    hex: #d89aad
+    rgb:rgba(216,154,173,255)
+
+green:
+    hex: #008b8b
+    rgb: rgba(0,139,139,255)
+
+yellow:
+    hex: #ffff00
+    rgb: rgba(255,255,0,255)
