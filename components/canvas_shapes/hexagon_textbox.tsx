@@ -1,6 +1,5 @@
-import { Container } from 'react-bootstrap';
 import React from 'react';
-import { Stage, Layer, RegularPolygon, Text } from 'react-konva';
+import { Container } from 'react-bootstrap';
 
 interface HexagonCanvasProps {
   title: string;
@@ -9,60 +8,66 @@ interface HexagonCanvasProps {
 }
 
 const HexagonCanvas: React.FC<HexagonCanvasProps> = ({ title, text, size }) => {
-  const pixelRatio = 100;
-  
   const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   const sideLength = isSmallScreen ? size[0] : size[1];
   const textOffset = isSmallScreen ? 45 : 75;
-  const titleSize = isSmallScreen ? 18 : 24;
+  const titleSize = isSmallScreen ? 18 : 26;
 
-  const hexagonRadius = sideLength;
-  const hexagonX = sideLength;
-  const hexagonY = sideLength;
+  const containerStyle: React.CSSProperties = {
+    width: sideLength * 2 + 'px',
+    height: sideLength * 2 + 'px',
+    position: 'relative',
+  };
+
+  const hexagonStyle: React.CSSProperties = {
+    width: '100%',
+    paddingBottom: '115.47%',
+    position: 'absolute',
+    top: '0',
+    left: '0',
+  };
+
+  const titleStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: '25%',
+    left: '20%',
+    fontSize: titleSize + 'px',
+    fontFamily: 'Calibri',
+    textAlign: 'center',
+  };
+
+  const textStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: '70%',
+    left: '20%',
+    transform: 'translate(-15%, -50%)',
+    fontSize: '20px',
+    fontFamily: 'Calibri',
+    textAlign: 'center',
+    color: '#000000',
+    padding: '5px',
+  };
 
   return (
     <Container className='flex-center'>
-        <Stage width={sideLength * 2} height={sideLength * 2} pixelRatio={pixelRatio}>
-            <Layer>
-                <RegularPolygon
-                x={hexagonX}
-                y={hexagonY}
-                sides={6}
-                radius={hexagonRadius}
-                fill="#ffff00"
-                stroke="#000000"
-                strokeWidth={0}
-                />
-                <Text
-                x={hexagonX - hexagonRadius}
-                y={hexagonY - hexagonRadius + textOffset}
-                text={title}
-                fontSize={titleSize}
-                width={hexagonRadius * 2}
-                align="center"
-                fontFamily="Calibri"
-                perfectDrawEnabled={false}
-                />
-                {!isSmallScreen && (
-                    <Text
-                    x={hexagonX - hexagonRadius}
-                    y={hexagonY - textOffset}
-                    fontSize={18}
-                    width={hexagonRadius * 2}
-                    align="center"
-                    listening={false}
-                    text={text}
-                    fill="#000000"
-                    fontStyle="normal"
-                    lineHeight={1.5}
-                    fontFamily="Calibri"
-                    padding={25}
-                    perfectDrawEnabled={false}
-                    />
-                )}
-            </Layer>
-        </Stage>
+      <div style={containerStyle}>
+        <div style={hexagonStyle}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 100 115.47"
+          >
+            <polygon
+              points="50 0 100 28.87 100 86.6 50 115.47 0 86.6 0 28.87"
+              fill="#ffff00"
+              stroke="#000000"
+              strokeWidth="0"
+            />
+          </svg>
+        </div>
+        <div style={titleStyle}><strong>{title}</strong></div>
+        {!isSmallScreen && <div style={textStyle}>{text}</div>}
+      </div>
     </Container>
   );
 };
