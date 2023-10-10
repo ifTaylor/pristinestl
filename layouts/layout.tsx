@@ -16,7 +16,7 @@ export function RootLayout({ pages, children }: RootLayoutProps) {
   return (
     <div id='app'>
       <Head>
-        <title>Pristine STL</title>
+        <title>Pristine STL | Cleaning Service</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header currentPage={pages} />
