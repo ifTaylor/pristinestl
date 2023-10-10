@@ -13,13 +13,13 @@ function ServiceChooser({
       <Col md={4}>
         <a className="service" onClick={() => setResidentialQuote(true)}>
           <h3>Residential Cleaning</h3>
-          <p>We provide comprehensive residential cleaning services to keep your home spotless.</p>
+          <div>We provide comprehensive residential cleaning services to keep your home spotless.</div>
         </a>
       </Col>
       <Col md={4}>
         <a className="service" onClick={() => setCommercialQuote(true)}>
         <h3>Commercial Cleaning</h3>
-            <p>Our expert team ensures a clean and sanitized work environment for your business.</p>
+            <div>Our expert team ensures a clean and sanitized work environment for your business.</div>
         </a>
       </Col>
     </Row>

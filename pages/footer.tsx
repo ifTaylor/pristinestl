@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
         <footer>
             <Container>
                 <img src="/p_logo.png" alt="Pristine STL Logo" style={{ maxWidth: '150px', maxHeight: '100px' }} />
-                <p>&copy; 2023 Pristine STL LLC</p>
+                <div>&copy; 2023 Pristine STL LLC</div>
             </Container>
         </footer>
     );

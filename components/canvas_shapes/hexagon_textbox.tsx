@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
 interface HexagonCanvasProps {
@@ -8,7 +8,13 @@ interface HexagonCanvasProps {
 }
 
 const HexagonCanvas: React.FC<HexagonCanvasProps> = ({ title, text, size }) => {
-  const isSmallScreen = typeof window !== 'undefined' && window.innerWidth <= 768;
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsSmallScreen(window.innerWidth <= 768);
+    }
+  }, []);
 
   const sideLength = isSmallScreen ? size[0] : size[1];
   const textOffset = isSmallScreen ? 45 : 75;

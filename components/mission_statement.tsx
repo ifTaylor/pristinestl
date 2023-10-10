@@ -18,9 +18,9 @@ function MissionStatement({}) {
             <img src="/p_logo.png" alt="Pristine STL Logo" style={{ maxHeight: '150px' }}></img>
             <h2>Our Pristine Mission</h2>
             <div className="container" style={{ maxWidth: '600px' }}>
-                <p>
+                <div>
                     At Pristine, we take immense pride in the exceptional quality and delight we bring to every cleaning job. Our commitment to customer satisfaction and building strong relationships is at the heart of everything we do.
-                </p>
+                </div>
             </div>
         </div>
     </Container>
