@@ -1,15 +1,18 @@
 # pristinestl
 
-###Business website for Pristine STL LLC.
+### Business website for Pristine STL LLC.
 
 - Client: Next.js
 - Server: Flask.
 - Deployment: Vercel, using serverless functions.  
 
 
-npm install
-npm i sass
-npm install canvas
-npm install react-konva konva --save
-npm build
-npm run start
+#### Run frontend
+$ npm install
+$ npm i sass
+$ npm build
+$ npm run start
+
+#### Run backend
+$ pip install -r requirements.txt
+./api $ python email_service.py
