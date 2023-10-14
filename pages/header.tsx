@@ -39,7 +39,7 @@ export default function Header(
               <Container>
                 <div className="flex-center">
                   <div className="header-phone-number">
-                      <a className="nav-link" href="tel:+3147751571">(314) 775-1571</a>
+                      <a className="nav-link" href="tel:+13147751571">(314) 775-1571</a>
                   </div>
                   <div>
                     <a className="cta-button" onClick={() => setResidentialQuote(true)}>Get a Quote</a>
