@@ -23,6 +23,8 @@ export default function ResidentialQuote({
   const [selectedFrequency, setSelectedFrequency] = useState(null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [messagePreview, setMessagePreview] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -103,10 +105,12 @@ export default function ResidentialQuote({
     const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!formData.name || !formData.email || !messagePreview) {
-        alert('Name, Email, Message, and Message Preview are required fields.');
+    if (!formData.name || !formData.phone) {
+        alert('Name and Number are required fields.');
         return;
     }
+
+    setLoading(true);
 
     try {
         const requestData = {
@@ -114,7 +118,7 @@ export default function ResidentialQuote({
         message: messagePreview,
         };
 
-        const response = await fetch('http://127.0.0.1:5000/submit_form', {
+        const response = await fetch('/api/submit_form', {
         method: 'POST',
         body: JSON.stringify(requestData),
         headers: {
@@ -123,12 +127,14 @@ export default function ResidentialQuote({
         });
 
         if (response.ok) {
-        alert('Email sent successfully!');
+        alert('Email sent, Kim will get back to you soon!');
         } else {
-        alert('Error sending email.');
+        alert('Error sending email. Please call us at (314) 775-1571');
         }
     } catch (error) {
         alert('Network error: ' + error.message);
+    } finally {
+        setLoading(false);
     }
     };
 
@@ -358,9 +364,15 @@ export default function ResidentialQuote({
         <Button variant="outline-secondary" onClick={handleCloseModal}>
             Cancel
         </Button>
-        <Button variant="secondary" type="submit">
-            Send
-        </Button>
+        <button type="submit" id="sendButton" className={`btn btn-secondary ${loading ? 'disabled' : ''}`}>
+            {loading ? (
+                <span>
+                <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...
+                </span>
+            ) : (
+                'Send'
+            )}
+        </button>
         </Modal.Footer>
     </Form>
     </Modal>

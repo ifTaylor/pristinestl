@@ -130,6 +130,20 @@ img {
     outline: 30px solid #ff0000;
 }
 
+.success-message {
+    color: black;
+}
+  
+.error-message {
+    color: red;
+    font-weight: bold;
+}  
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
 .modal-title {
     font-size: 18px !important;
 }

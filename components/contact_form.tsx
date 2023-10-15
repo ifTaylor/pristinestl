@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Card } from 'react-bootstrap';
 
 function ContactForm() {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
+
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -16,12 +20,14 @@ function ContactForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     if (!formData.name || !formData.phone) {
-      alert('Name and Number are required fields.');
+      setMessage('Name and Number are required fields.');
       return;
     }
-
+  
+    setLoading(true);
+  
     try {
       const response = await fetch('/api/submit_form', {
         method: 'POST',
@@ -30,13 +36,16 @@ function ContactForm() {
           'Content-Type': 'application/json',
         },
       });
+  
       if (response.ok) {
-        alert('Email sent successfully!');
+        setMessage('Email sent, Kim will get back to you soon!');
       } else {
-        alert('Error sending email.');
+        setMessage('Error sending email. Please call us at (314) 775-1571');
       }
     } catch (error) {
-      alert('Network error: ' + error.message);
+      setMessage('Network error: ' + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -105,7 +114,20 @@ function ContactForm() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-              <button type="submit" id="sendButton" className="btn btn-secondary">Send</button>
+              {message && (
+                <div className={message.includes('Error') ? 'error-message' : 'success-message'}>
+                  {message}
+                </div>
+              )}
+              <button type="submit" id="sendButton" className={`btn btn-secondary ${loading ? 'disabled' : ''}`}>
+                {loading ? (
+                  <span>
+                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...
+                  </span>
+                ) : (
+                  'Send'
+                )}
+              </button>
             </Form>
           </Col>
         </Row>
