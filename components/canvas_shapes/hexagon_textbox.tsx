@@ -16,11 +16,6 @@ const HexagonCanvas: React.FC<HexagonCanvasProps> = ({ title, text, size }) => {
     }
   }, []);
 
-  const sideLength = isSmallScreen ? size[0] : size[1];
-  const textOffset = isSmallScreen ? '0vw' : '5vw';
-  const titleLROffset = isSmallScreen ? '0vh' : '15vh';
-  const titleSize = isSmallScreen ? '0' : '1vw';
-
   const containerStyle: React.CSSProperties = {
     width: isSmallScreen ? '80vw' : '20vw',
     height: isSmallScreen ? '28vw' : '20vw',
@@ -39,20 +34,20 @@ const HexagonCanvas: React.FC<HexagonCanvasProps> = ({ title, text, size }) => {
     position: 'absolute',
     top: isSmallScreen ? '40%' : '25%',
     left: isSmallScreen ? '0%' : '23%',
-    fontSize: isSmallScreen ? '5vw' : '1.3vw',
+    fontSize: isSmallScreen ? '5vw' : '1.2vw',
     fontFamily: 'Calibri',
     textAlign: 'center',
   };
 
   const textStyle: React.CSSProperties = {
     position: 'absolute',
-    top: '45%',
+    top: '40%',
     left: '0%',
-    fontSize: isSmallScreen ? '1vw' : '1vw',
+    fontSize: '120%',
     fontFamily: 'Calibri',
     textAlign: 'center',
     color: '#000000',
-    padding: '5px',
+    padding: '1%',
   };
 
   return (

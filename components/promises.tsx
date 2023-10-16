@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import HexagonTextBox from './canvas_shapes/hexagon_textbox';
+import HexagonCanvas from './canvas_shapes/hexagon_textbox';
 
 function Promises({}) {
     const delightfulQuality = "Our team is dedicated to delivering spotless results that exceed your expectations." +
@@ -16,17 +16,17 @@ function Promises({}) {
     
 
   return (
-    <Container>
+    <Container className="item-padding">
       <Row className="flex-center">
         <Col lg={4} sm={1} xs={6}>
-          <HexagonTextBox
+          <HexagonCanvas
             title="Delightful Quality"
             text={delightfulQuality}
             size={[60, 180]}
           />
         </Col>
         <Col lg={4} sm={1} xs={6}>
-          <HexagonTextBox
+          <HexagonCanvas
             title="Trusted Professionals"
             text={trustedProfessionals}
             size={[60, 180]}
@@ -35,7 +35,7 @@ function Promises({}) {
       </Row>
       <Row className="flex-center">
         <Col lg={4} sm={1} xs={6}>
-          <HexagonTextBox
+          <HexagonCanvas
             title="Personalized Service"
             text={personalizedService}
             size={[60, 180]}
@@ -44,14 +44,14 @@ function Promises({}) {
       </Row>
       <Row className="flex-center">
         <Col lg={4} sm={1} xs={6}>
-          <HexagonTextBox
+          <HexagonCanvas
             title="Customer Satisfaction"
             text={customerSatisfaction}
             size={[60, 180]}
           />
         </Col>
         <Col lg={4} sm={1} xs={6}>
-          <HexagonTextBox
+          <HexagonCanvas
             title="Building Relationships"
             text={buildingRelationships}
             size={[60, 180]}
