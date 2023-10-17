@@ -4,8 +4,7 @@ import { RootLayout, Pages } from '../layouts';
 import ResidentialQuote from '../modals/residential_quote';
 import ServiceChooser from '../components/service_chooser';
 import ContactForm from '../components/contact_form';
-import ResidentialServices from '../components/services_residential';
-import CommercialServices from '../components/services_commercial';
+import ServicesList from '../components/services_list';
 
 function ServicesPage() {
   const [showResidentialQuote, setResidentialQuote] = useState(false);
@@ -18,18 +17,11 @@ function ServicesPage() {
           throw new Error('Function not implemented.');
         }}/>
       <RootLayout pages={Pages.Services}>
+        <ServicesList/>
         <ServiceChooser
           setResidentialQuote={setResidentialQuote}
           setCommercialQuote={setResidentialQuote}
         />
-        <Row className="justify-content-center">
-          <Col md={4}>
-            <ResidentialServices/>
-          </Col>
-          <Col md={4}>
-            <CommercialServices/>
-          </Col>
-        </Row>
         <ContactForm/>
       </RootLayout>
     </Container>
