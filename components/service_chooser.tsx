@@ -1,29 +1,57 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useSpring, animated } from 'react-spring';
+import { useInView } from 'react-intersection-observer';
 
 function ServiceChooser({
     setResidentialQuote,
     setCommercialQuote
 }) {
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+  });
+
+  const colAnimation = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translateY(0)' : 'translateY(200px)',
+  });
+
+
+  const backgroundAnimation = useSpring({
+    from: { backgroundColor: '#d89aad', opacity: 1, borderRadius: '20px' },
+    to: async next => {
+      while (1) {
+        await next({ backgroundColor: '#008b8b', opacity: 0.7 });
+        await next({ backgroundColor: '#d89aad', opacity: 1 });
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+    },
+  });
 
   return (
-    <Container className="text-center mt-5" >
-    <h2>Choose your service to get started today!</h2>
-    <Row className="justify-content-center">
-      <Col md={4}>
-        <a className="service" onClick={() => setResidentialQuote(true)}>
-          <h3>Residential Cleaning</h3>
-          <div>We provide comprehensive residential cleaning services to keep your home spotless.</div>
-        </a>
-      </Col>
-      <Col md={4}>
-        <a className="service" onClick={() => setCommercialQuote(true)}>
-        <h3>Commercial Cleaning</h3>
-            <div>Our expert team ensures a clean and sanitized work environment for your business.</div>
-        </a>
-      </Col>
-    </Row>
-  </Container>
+    <div ref={ref}>
+      <Container className="text-center mt-5">
+        <animated.div style={backgroundAnimation} className="text-center item-padding">
+            <h2>Choose your service to get started today!</h2>
+              <Row className="justify-content-center item-padding">
+                <Col style={{ maxWidth: '300px' }}>
+                  <animated.div style={colAnimation} className="text-center">
+                    <a className="service" onClick={() => setResidentialQuote(true)}>
+                      Residential Quote
+                    </a>
+                  </animated.div>
+                </Col>
+                <Col style={{ maxWidth: '300px' }}>
+                  <animated.div style={colAnimation} className="text-center">
+                    <a className="service" onClick={() => setCommercialQuote(true)}>
+                      Commercial Quote
+                    </a>
+                  </animated.div>
+                </Col>
+              </Row>
+        </animated.div>
+      </Container>
+    </div>
   );
 }
 

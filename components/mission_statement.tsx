@@ -1,30 +1,45 @@
 import React from 'react';
-import { Container, Image } from 'react-bootstrap';
+import { useSpring, animated, config } from 'react-spring';
+import Container from 'react-bootstrap/Container';
+import { useInView } from 'react-intersection-observer';
 
-function MissionStatement({}) {
-    const residentialItems = [
-        'Reoccurring Clean',
-        'Deep Clean',
-        'Carpet Shampoo',
-        'Windows Cleaning',
-        'Oven Cleaning', 
-        'Fridge Cleaning',
-        'Move In/Out Cleaning',
-      ];
+function YourComponent() {
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+  });
+
+  const containerAnimation = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translateY(0)' : 'translateY(20px)',
+    config: config.wobbly,
+  });
 
   return (
-    <Container className="text-center mt-5" >
-        <div className="container text-center container-padding">
-            <img src="/p_logo.png" alt="Pristine STL Logo" style={{ maxHeight: '150px' }}></img>
+    <Container className="text-center mt-5">
+      <div className="container text-center item-padding">
+        <div ref={ref}>
+          <animated.div
+            style={{
+              opacity: containerAnimation.opacity,
+              transform: containerAnimation.transform,
+            }}
+          >
+            <animated.img
+              src="/p_logo.png"
+              alt="Pristine STL Logo"
+              style={{ maxHeight: '150px' }}
+            />
             <h2>Our Pristine Mission</h2>
             <div className="container" style={{ maxWidth: '600px' }}>
-                <div>
-                    At Pristine, we take immense pride in the exceptional quality and delight we bring to every cleaning job. Our commitment to customer satisfaction and building strong relationships is at the heart of everything we do.
-                </div>
+              <div>
+                At Pristine, we take immense pride in the exceptional quality and delight we bring to every cleaning job. Our commitment to customer satisfaction and building strong relationships is at the heart of everything we do.
+              </div>
             </div>
+          </animated.div>
         </div>
+      </div>
     </Container>
   );
 }
 
-export default MissionStatement;
+export default YourComponent;
