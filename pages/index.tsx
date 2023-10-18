@@ -13,7 +13,7 @@ function HomePage() {
   const [showResidentialQuote, setResidentialQuote] = useState(false);
 
   return (
-    <Container>
+    <div>
       <ResidentialQuote
         onHide={() => setResidentialQuote(false)}
         show={showResidentialQuote} onResidentialQuote={function (file: Blob): void {
@@ -31,7 +31,7 @@ function HomePage() {
           <Promises/>
           <ContactForm/>
       </RootLayout>
-    </Container>
+    </div>
   );
 }
 

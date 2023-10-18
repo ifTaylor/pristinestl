@@ -3,11 +3,11 @@ import { Container } from 'react-bootstrap';
 
 function BannerGraphic({}) {
   return (
-    <Container>
+    <div>
         <div className="header-image-container">
         <img src="/tile-header-final2.jpg" alt="Wallpaper" />
         </div>
-    </Container>
+    </div>
   );
 }
 
