@@ -16,7 +16,7 @@ function Promises({}) {
     
 
   return (
-    <Container>
+    <Container className="container-padding">
       <Row className="flex-center">
         <Col lg={4} sm={1} xs={6}>
           <HexagonTextBox

@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSpring, animated } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function ServiceChooser({
     setResidentialQuote,
@@ -37,6 +38,8 @@ function ServiceChooser({
                 <Col style={{ maxWidth: '300px' }}>
                   <animated.div style={colAnimation} className="text-center">
                     <a className="service" onClick={() => setResidentialQuote(true)}>
+                      <i className="bi bi-house-fill service-icon"></i>
+                      <br></br>
                       Residential Quote
                     </a>
                   </animated.div>
@@ -44,6 +47,8 @@ function ServiceChooser({
                 <Col style={{ maxWidth: '300px' }}>
                   <animated.div style={colAnimation} className="text-center">
                     <a className="service" onClick={() => setCommercialQuote(true)}>
+                      <i className="bi bi-building service-icon"></i>
+                      <br></br>
                       Commercial Quote
                     </a>
                   </animated.div>
