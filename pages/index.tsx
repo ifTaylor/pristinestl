@@ -8,12 +8,13 @@ import ContactForm from '../components/contact_form';
 import HeaderMessage from '../components/header_message';
 import BannerGraphic from '../components/banner_graphic';
 import MissionStatement from '../components/mission_statement';
+import ServicePackages from '../components/service_packages';
 
 function HomePage() {
   const [showResidentialQuote, setResidentialQuote] = useState(false);
 
   return (
-    <Container>
+    <div>
       <ResidentialQuote
         onHide={() => setResidentialQuote(false)}
         show={showResidentialQuote} onResidentialQuote={function (file: Blob): void {
@@ -28,10 +29,11 @@ function HomePage() {
             setCommercialQuote={setResidentialQuote}
           />
           <MissionStatement/>
+          <ServicePackages/>
           <Promises/>
           <ContactForm/>
       </RootLayout>
-    </Container>
+    </div>
   );
 }
 

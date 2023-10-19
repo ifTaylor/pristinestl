@@ -100,6 +100,12 @@ img {
     }
 }
 
+.service-icon {
+  display: flex;
+  justify-content: center;
+  font-size: 4rem;
+}
+
 .white-container {
     background-color: #ffffff;
     border-radius: 10px;
@@ -124,6 +130,12 @@ img {
     &:hover {
         background-color: $cta-button-hover-color;
     }
+}
+
+.top-title {
+  margin: 0;
+  font-size: 2rem;
+  color: #555;
 }
 
 .btn-outline {
@@ -316,3 +328,95 @@ footer {
         font-size: 16px;
     }
 }
+
+// Table styles
+.plans-table {
+    background-color: #f8f8f8;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table-top-row {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .table-no-border {
+    border: none;
+  }
+  
+  // Table header styles
+  .table-header-cell {
+    padding: 1rem;
+    color: #555;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .table-top-title {
+    margin: 0;
+    font-size: 2rem;
+    color: #555;
+  }
+  
+  .table-top-subtitle {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'Bell MT';
+    color: #888;
+    display:block;
+    padding-left: 8rem;
+  }
+
+  .table-top-popular {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'Bell MT';
+    color: #888;
+    display:block;
+  }
+  
+  .table-top-right {
+    flex-grow: 1;
+    text-align: right;
+  }
+  
+  // Table content styles
+  .table-cell {
+    padding: 1rem;
+    color: #333;
+    font-size: 1rem;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+
+  .table-cell-center {
+    padding: 1rem;
+    color: #333;
+    font-size: 1rem;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+
+  .table-icon {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+  
+  .plan-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .table-text {
+    font-size: 1rem;
+    font-family: 'Bell MT';
+    color: #888;
+  }
+
+  .highlight-cell {
+    background-color: #d89aad;
+  }
