@@ -294,41 +294,6 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
-    .header-message p {
-        font-size: 16px;
-    }
-
-    .header-image-container {
-        @extend .flex-center;
-        padding-top: 10px;
-        margin: 0;
-        height: 15vh;
-        overflow: hidden;
-    
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: left;
-            border-radius: 10px;
-        }
-    }
-
-    h2,
-    h3 {
-        font-size: 18px;
-    }
-
-    p {
-        font-size: 14px;
-    }
-
-    .center-container h3 {
-        font-size: 16px;
-    }
-}
-
 // Table styles
 .plans-table {
     background-color: #f8f8f8;
@@ -420,3 +385,52 @@ footer {
   .highlight-cell {
     background-color: #d89aad;
   }
+
+@media (max-width: 768px) {
+  .table-icon {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+  }
+
+  .table-header-cell {
+    display: none;
+  }
+
+  .table-text {
+    display: none;
+  }
+
+  .header-message p {
+      font-size: 16px;
+  }
+
+  .header-image-container {
+      @extend .flex-center;
+      padding-top: 10px;
+      margin: 0;
+      height: 15vh;
+      overflow: hidden;
+  
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: left;
+          border-radius: 10px;
+      }
+  }
+
+  h2,
+  h3 {
+      font-size: 18px;
+  }
+
+  p {
+      font-size: 14px;
+  }
+
+  .center-container h3 {
+      font-size: 16px;
+  }
+}

@@ -40,11 +40,9 @@ const ServicePackages: React.FC = () => {
 
   return (
     <Container className="container-padding">
-      <Row>
-        <Col>
-          <Table>
-            <thead className="plans-table">
-              <tr className="table-top-row">
+          <Table className="plans-table">
+          <thead className="table-top-row">
+              <tr>
                 <th>
                   <div>
                     <div className="table-top-title mb-0">Your Lifestyle</div>
@@ -52,10 +50,20 @@ const ServicePackages: React.FC = () => {
                   </div>
                 </th>
               </tr>
+            </thead>
+          </Table>
+          <Table className="plans-table">
+            <colgroup>
+              <col style={{ width: '10%' }} />
+              <col style={{ width: '10%' }} />
+              <col style={{ width: '10%' }} />
+              <col style={{ width: '10%' }} />
+            </colgroup>
+            <thead className="table-top-row">
               <tr>
                 <th>
                   <div className="table-header-cell">
-                    Pristine offers base plans to help get you started!
+                    Let's help get you started!
                   </div>
                 </th>
                 <th className="table-cell-center">
@@ -73,40 +81,40 @@ const ServicePackages: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-                {roomNames.map((roomName, rowIndex) => (
+              {roomNames.map((roomName, rowIndex) => (
                 <tr key={rowIndex}>
-                    <td className="table-cell">{roomName}</td>
-                    {options.map((option, optionIndex) => (
+                  <td className="table-cell">{roomName}</td>
+                  {options.map((option, optionIndex) => (
                     <td
-                        key={optionIndex}
-                        className={`table-cell${option.rooms[roomName] ? ' filled' : ''}`}
+                      key={optionIndex}
+                      className={`table-cell${option.rooms[roomName] ? ' filled' : ''}`}
                     >
-                        {option.rooms[roomName] && (
+                      {option.rooms[roomName] && (
                         <i className="bi bi-house-check-fill table-icon"></i>
-                        )}
+                      )}
                     </td>
-                    ))}
+                  ))}
                 </tr>
-                ))}
+              ))}
+            </tbody>
+          </Table>
+          <Table>
+            <thead>
               <tr>
                 <td colSpan={2}>
                   <div className="footer-heading">Got Questions?</div>
                   <div className="footer-text">
                     We're here to help!{' '}
-                    <a href="/locations/" style={{ color: 'var(--headline-blue)' }}>
+                    <a href="/contact" style={{ color: 'var(--headline-blue)' }}>
                       Contact us
                     </a>
                   </div>
                 </td>
-                <td>
-                </td>
-                <td>
-                </td>
+                <td></td>
+                <td></td>
               </tr>
-            </tbody>
+            </thead>
           </Table>
-        </Col>
-      </Row>
     </Container>
   );
 };
