@@ -29,7 +29,7 @@ const HexagonCanvas: React.FC<HexagonCanvasProps> = ({ title, text, size }) => {
 
   const hexagonStyle: React.CSSProperties = {
     width: '100%',
-    paddingBottom: '115.47%',
+    paddingBottom: '120%',
     position: 'absolute',
     top: '0',
     left: '0',
@@ -37,7 +37,7 @@ const HexagonCanvas: React.FC<HexagonCanvasProps> = ({ title, text, size }) => {
 
   const titleStyle: React.CSSProperties = {
     position: 'absolute',
-    top: isSmallScreen ? '40%' : '25%',
+    top: isSmallScreen ? '42%' : '25%',
     left: isSmallScreen ? '0%' : '23%',
     fontSize: isSmallScreen ? '5vw' : '1.3vw',
     fontFamily: 'Calibri',

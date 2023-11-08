@@ -33,7 +33,7 @@ function Promises({}) {
           />
         </Col>
       </Row>
-      <Row className="flex-center">
+      <Row className="flex-center mt-2">
         <Col lg={4} sm={1} xs={6}>
           <HexagonTextBox
             title="Personalized Service"
@@ -42,7 +42,7 @@ function Promises({}) {
           />
         </Col>
       </Row>
-      <Row className="flex-center">
+      <Row className="flex-center mt-2">
         <Col lg={4} sm={1} xs={6}>
           <HexagonTextBox
             title="Customer Satisfaction"
