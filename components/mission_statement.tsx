@@ -30,10 +30,11 @@ function YourComponent() {
               style={{ maxHeight: '150px' }}
             />
             <div className="top-title">Our Pristine Mission</div>
-            <div className="container" style={{ maxWidth: '600px' }}>
-              <div>
-                At Pristine, we take immense pride in the exceptional quality and delight we bring to every cleaning job. Our commitment to customer satisfaction and building strong relationships is at the heart of everything we do.
-              </div>
+            <div className="container" style={{ maxWidth: '400px' }}>
+                At Pristine, we take immense pride in the exceptional quality and delight we bring to every cleaning job.
+            </div>
+            <div className="container mt-3" style={{ maxWidth: '325px' }}>
+                Our commitment to customer satisfaction and building strong relationships is at the heart of everything we do.
             </div>
           </animated.div>
         </div>

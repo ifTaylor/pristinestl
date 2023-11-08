@@ -15,7 +15,7 @@ function AboutKim({}) {
           />
 `         <div style={{ verticalAlign: 'bottom' }}>
             <img src="/p_logo.png" alt="Pristine STL Logo" style={{ maxHeight: '150px', display: 'inline' }} />
-            <h2 style={{ display: 'inline', verticalAlign: 'bottom' }}>About Me</h2>
+            <h2 style={{ display: 'inline', verticalAlign: 'bottom' }}>Meet the Owner</h2>
           </div>
           <div className="pink-container">
             <p className='item-padding'>
