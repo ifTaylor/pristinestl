@@ -34,19 +34,13 @@ export default function ResidentialQuote({
   });
 
   useEffect(() => {
-    const messagePreviewElement = document.getElementById('messagePreview');
-  
     if (selectedCleaningTypes.length > 0) {
       setCleaningTypeMessage(`Services to note: ${selectedCleaningTypes.join(' ')}`);
     } else {
       setCleaningTypeMessage('');
     }
-  
-    if (messagePreviewElement) {
-      const previewContent = `${nameMessage} ${phoneNumberMessage}\n${emailMessage}\n${frequencyMessage} ${squareFootageMessage} ${cleaningTypeMessage}`;
-      setMessagePreview(previewContent);
-      messagePreviewElement.textContent = previewContent;
-    }
+    const previewContent = `${nameMessage} ${phoneNumberMessage}\n${emailMessage}\n${frequencyMessage} ${squareFootageMessage} ${cleaningTypeMessage}`;
+    setMessagePreview(previewContent);
   }, [nameMessage, phoneNumberMessage, emailMessage, frequencyMessage, squareFootageMessage, cleaningTypeMessage, selectedCleaningTypes]);
 
   const handleCleaningTypeChange = (e) => {
@@ -117,6 +111,7 @@ export default function ResidentialQuote({
         ...formData,
         message: messagePreview,
         };
+        console.log(requestData);
 
         const response = await fetch('/api/submit_form', {
         method: 'POST',
