@@ -199,9 +199,9 @@ export default function ResidentialQuote({
                 </Col>
                 <Col className="service-info">
                     <Form.Label className="flex-center modal-subtitle"><strong>Service Information</strong></Form.Label>
-                    <Row className="flex-center green-container">
-                        <Col className="flex-center-start">
-                            <div className="form-group item-padding">
+                    <Row className="green-container">
+                        <Col>
+                            <div className="form-group">
                             <Form.Label className="modal-label flex-center-start"><strong>How Often?</strong></Form.Label>
                             <div className="btn-group-vertical" role="group">
                             <Button
@@ -247,8 +247,8 @@ export default function ResidentialQuote({
                             </div>
                             </div>
                         </Col>
-                        <Col className="flex-center-start">
-                        <div className="form-group item-padding">
+                        <Col>
+                        <div className="form-group">
                         <Form.Label className="modal-label flex-center-start"><strong>What Size?</strong></Form.Label>
                             <div className="btn-group-vertical" role="group">
                                 <Button
@@ -294,10 +294,9 @@ export default function ResidentialQuote({
                             </div>
                             </div>
                         </Col>
-                        <Col>
-                            <div className="form-group">
-                            <Form.Label className="modal-label flex-center-start"><strong>Cleaning Type?</strong></Form.Label>
-                            <Col style={{ paddingTop: '15px' }}>
+                        <Col style={{ verticalAlign: 'top' }}>
+                            <Form.Label className="modal-label"><strong>Cleaning Type?</strong></Form.Label>
+                            <Col>
                             <Form.Check
                                 type="checkbox"
                                 label="Reoccurring"
@@ -335,7 +334,6 @@ export default function ResidentialQuote({
                                 style={{ textAlign: 'left' }}
                             />
                         </Col>
-                            </div>
                         </Col>
                     </Row>
                 </Col>
