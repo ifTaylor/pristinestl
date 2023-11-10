@@ -162,15 +162,46 @@ img {
 
 .modal-title {
     font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+.modal-subtitle {
+    font-size: 18px !important;
 }
 
 .modal-label {
-    font-size: 15px !important;
-    text-align: left;
+  position: sticky;
+  top: 0;
+  font-size: 12px !important;
+  padding-bottom: 5px;
 }
 
 .modal-button {
-    font-size: 14px !important;
+    font-size: 12px !important;
+}
+
+.contact-info {
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: #fff;
+  background-color: $link-color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  text-decoration: none;
+  text-align: left;
+}
+
+.service-info {
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: #fff;
+  background-color: $highlight-color;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
 }
 
 .header-message {
