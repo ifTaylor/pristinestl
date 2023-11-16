@@ -1,6 +1,6 @@
 import React, { FormEvent, useState, useEffect } from 'react';
 import { Form, Modal, Button, Row, Col } from 'react-bootstrap';
-import MessagePreview from '../components/message_preview';
+import MessagePreview from '../components/message_preview_residential';
 
 interface ResidentialQuoteProps {
   show: boolean;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Card, ListGroup } from 'react-bootstrap';
 import { RootLayout, Pages } from '../layouts';
 import ResidentialQuote from '../modals/residential_quote';
+import CommercialQuote from '../modals/commercial_quote';
 import ServiceChooser from '../components/service_chooser';
 import Promises from '../components/promises';
 import ContactForm from '../components/contact_form';
@@ -12,6 +13,7 @@ import ServicePackages from '../components/service_packages';
 
 function HomePage() {
   const [showResidentialQuote, setResidentialQuote] = useState(false);
+  const [showCommercialQuote, setCommercialQuote] = useState(false);
 
   return (
     <div>
@@ -20,13 +22,18 @@ function HomePage() {
         show={showResidentialQuote} onResidentialQuote={function (file: Blob): void {
           throw new Error('Function not implemented.');
         }}/>
+      <CommercialQuote
+        onHide={() => setCommercialQuote(false)}
+        show={showCommercialQuote} onCommercialQuote={function (file: Blob): void {
+          throw new Error('Function not implemented.');
+        }}/>
 
       <HeaderMessage/>
       <RootLayout pages={Pages.HomePage}>
           <BannerGraphic/>
           <ServiceChooser
             setResidentialQuote={setResidentialQuote}
-            setCommercialQuote={setResidentialQuote}
+            setCommercialQuote={setCommercialQuote}
           />
           <MissionStatement/>
           <ServicePackages/>

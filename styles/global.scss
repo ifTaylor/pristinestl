@@ -22,6 +22,24 @@ $cta-button-hover-color: #008b8bac;
     align-items: start;
 }
 
+.flex-inline {
+    display: flex;
+}
+
+.center-content {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.inline-padding {
+  padding-left: 100%;
+}
+
+.list-padding {
+  padding-top: 3%;
+}
+
 // Base styles
 body {
     background-color: $primary-bg-color;
