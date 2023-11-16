@@ -58,7 +58,7 @@ export default function CommercialQuote({
     }
     
     const previewContent = `
-    "Commercial Quote:\n
+    Commercial Quote:
     ${companyNameMessage}
     ${attentionMessage}
     ${phoneNumberMessage}

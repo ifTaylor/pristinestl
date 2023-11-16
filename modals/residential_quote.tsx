@@ -55,7 +55,7 @@ export default function ResidentialQuote({
         setDaysMessage('');
     }
     const previewContent = `
-    "Residential Quote:
+    Residential Quote:
     ${nameMessage} ${phoneNumberMessage}${emailMessage}
     ${contactMethodMessage}
     ${frequencyMessage} ${daysMessage} ${squareFootageMessage} ${cleaningTypeMessage}`;
