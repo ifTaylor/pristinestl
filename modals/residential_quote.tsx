@@ -1,6 +1,6 @@
 import React, { FormEvent, useState, useEffect } from 'react';
 import { Form, Modal, Button, Row, Col } from 'react-bootstrap';
-import MessagePreview from '../components/message_preview';
+import MessagePreview from '../components/message_preview_residential';
 
 interface ResidentialQuoteProps {
   show: boolean;
@@ -16,11 +16,15 @@ export default function ResidentialQuote({
   const [nameMessage, setNameMessage] = useState('');
   const [phoneNumberMessage, setPhoneNumberMessage] = useState('');
   const [emailMessage, setEmailMessage] = useState('');
+  const [selectedContactMethods, setSelectedContactMethods] = useState([]);
+  const [contactMethodMessage, setContactMethodMessage] = useState('');
   const [frequencyMessage, setFrequencyMessage] = useState('');
   const [squareFootageMessage, setSquareFootageMessage] = useState('');
   const [cleaningTypeMessage, setCleaningTypeMessage] = useState('');
   const [selectedCleaningTypes, setSelectedCleaningTypes] = useState([]);
   const [selectedFrequency, setSelectedFrequency] = useState(null);
+  const [selectedDays, setSelectedDays] = useState([]);
+  const [daysMessage, setDaysMessage] = useState('');
   const [selectedSize, setSelectedSize] = useState(null);
   const [messagePreview, setMessagePreview] = useState('');
   const [loading, setLoading] = useState(false);
@@ -34,14 +38,31 @@ export default function ResidentialQuote({
   });
 
   useEffect(() => {
+    if (selectedContactMethods.length > 0) {
+        setContactMethodMessage(`I can be reached via ${selectedContactMethods.join(' or ')}.`);
+      } else {
+        setContactMethodMessage('');
+    }
     if (selectedCleaningTypes.length > 0) {
-      setCleaningTypeMessage(`Services to note: ${selectedCleaningTypes.join(' ')}`);
+      setCleaningTypeMessage(`Services to note: ${selectedCleaningTypes.join(', ')}`);
     } else {
       setCleaningTypeMessage('');
     }
-    const previewContent = `${nameMessage} ${phoneNumberMessage}\n${emailMessage}\n${frequencyMessage} ${squareFootageMessage} ${cleaningTypeMessage}`;
+    if (selectedDays.length > 0) {
+        setDaysMessage(`on preferred days: ${selectedDays.join(', ')}.`);
+      } else {
+        setDaysMessage('');
+    }
+    const previewContent = `
+    Residential Quote:
+    ${nameMessage} ${phoneNumberMessage}
+    ${emailMessage}
+    ${contactMethodMessage}
+    ${frequencyMessage}
+    ${daysMessage}
+    ${squareFootageMessage} ${cleaningTypeMessage}`;
     setMessagePreview(previewContent);
-  }, [nameMessage, phoneNumberMessage, emailMessage, frequencyMessage, squareFootageMessage, cleaningTypeMessage, selectedCleaningTypes]);
+  }, [nameMessage, phoneNumberMessage, emailMessage, frequencyMessage, squareFootageMessage, cleaningTypeMessage, selectedCleaningTypes, selectedContactMethods, selectedDays]);
 
   const handleCleaningTypeChange = (e) => {
     const value = e.target.value;
@@ -49,6 +70,30 @@ export default function ResidentialQuote({
       setSelectedCleaningTypes((prevSelected) => [...prevSelected, value]);
     } else {
       setSelectedCleaningTypes((prevSelected) =>
+        prevSelected.filter((type) => type !== value)
+      );
+    }
+  };
+
+  const handleContactMethodChange = (e) => {
+    const value = e.target.value;
+  
+    if (e.target.checked) {
+      setSelectedContactMethods((prevSelected) => [...prevSelected, value]);
+    } else {
+      setSelectedContactMethods((prevSelected) =>
+        prevSelected.filter((type) => type !== value)
+      );
+    }
+  };
+
+  const handleDaysChange = (e) => {
+    const value = e.target.value;
+  
+    if (e.target.checked) {
+      setSelectedDays((prevSelected) => [...prevSelected, value]);
+    } else {
+        setSelectedDays((prevSelected) =>
         prevSelected.filter((type) => type !== value)
       );
     }
@@ -65,10 +110,14 @@ export default function ResidentialQuote({
     setNameMessage('');
     setPhoneNumberMessage('');
     setEmailMessage('');
+    setSelectedContactMethods([]);
+    setContactMethodMessage('');
     setSelectedCleaningTypes([]);
     setFrequencyMessage('');
     setSquareFootageMessage('');
     setCleaningTypeMessage('');
+    setDaysMessage('');
+    setSelectedDays([]);
     onHide();
   };
 
@@ -81,15 +130,15 @@ export default function ResidentialQuote({
     };
 
     const updatePhoneNumber = (value) => {
-        setPhoneNumberMessage(`my phone number is ${value}.\n`);
+        setPhoneNumberMessage(`my phone number is ${value}.`);
     };
 
     const updateEmail = (value) => {
-        setEmailMessage(`Email address: ${value}. `);
+        setEmailMessage(`Email address, ${value}. `);
     };
 
     const updateFrequency = (frequency) => {
-        setFrequencyMessage(`I'm in search of a ${frequency} clean.`);
+        setFrequencyMessage(`I'm in search of a ${frequency} clean, `);
       };
 
     const updateSquareFootage = (footage) => {
@@ -183,13 +232,42 @@ export default function ResidentialQuote({
                         className="form-control"
                         id="email"
                         name="email"
-                        placeholder="(Optional)"
                         value={formData.email}
                         onChange={(e) => {
                         setFormData({ ...formData, email: e.target.value });
                         updateEmail(e.target.value);
                         }}
                     />
+                    </div>
+                    <div className="list-padding center-content form-group">
+                        <Form.Label className="modal-label"><strong>Preferred Contact Method:</strong></Form.Label>
+                        <div className="center-content">
+                        <Form.Check
+                            type="checkbox"
+                            label="Phone"
+                            value="Phone"
+                            checked={selectedContactMethods.includes('Phone')}
+                            onChange={handleContactMethodChange}
+                            className="modal-button"
+                        />
+                        <div className="inline-padding"></div>
+                        <Form.Check
+                            type="checkbox"
+                            label="Email"
+                            value="Email"
+                            checked={selectedContactMethods.includes('Email')}
+                            onChange={handleContactMethodChange}
+                            className="modal-button"
+                        />
+                        <Form.Check
+                            type="checkbox"
+                            label="Text"
+                            value="Text"
+                            checked={selectedContactMethods.includes('Text')}
+                            onChange={handleContactMethodChange}
+                            className="modal-button"
+                        />
+                        </div>
                     </div>
                 </Col>
                 <Col className="service-info">
@@ -289,46 +367,57 @@ export default function ResidentialQuote({
                             </div>
                             </div>
                         </Col>
-                        <Col style={{ verticalAlign: 'top' }}>
-                            <Form.Label className="modal-label"><strong>Cleaning Type?</strong></Form.Label>
-                            <Col>
-                            <Form.Check
-                                type="checkbox"
-                                label="Reoccurring"
-                                value="Reoccurring Clean"
-                                checked={selectedCleaningTypes.includes('Reoccurring Clean')}
-                                onChange={handleCleaningTypeChange}
-                                className="modal-button text-left"
-                                style={{ textAlign: 'left' }}
-                            />
-                            <Form.Check
-                                type="checkbox"
-                                label="Deep Clean"
-                                value="Deep Clean"
-                                checked={selectedCleaningTypes.includes('Deep Clean')}
-                                onChange={handleCleaningTypeChange}
-                                className="modal-button"
-                                style={{ textAlign: 'left' }}
-                            />
-                            <Form.Check
-                                type="checkbox"
-                                label="Carpet Shampoo"
-                                value="Carpet Shampoo"
-                                checked={selectedCleaningTypes.includes('Carpet Shampoo')}
-                                onChange={handleCleaningTypeChange}
-                                className="modal-button"
-                                style={{ textAlign: 'left' }}
-                            />
-                            <Form.Check
-                                type="checkbox"
-                                label="Move In/Out"
-                                value="Move In/Out"
-                                checked={selectedCleaningTypes.includes('Move In/Out')}
-                                onChange={handleCleaningTypeChange}
-                                className="modal-button"
-                                style={{ textAlign: 'left' }}
-                            />
-                        </Col>
+                        <Col>
+                        <div className="form-group">
+                            <Form.Label className="modal-label"><strong>Preferred Days:</strong></Form.Label>
+                                <Col className="center-content">
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Monday"
+                                    value="Monday"
+                                    checked={selectedDays.includes('Monday')}
+                                    onChange={handleDaysChange}
+                                    className="modal-button text-left"
+                                    style={{ textAlign: 'left' }}
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Tuesday"
+                                    value="Tuesday"
+                                    checked={selectedDays.includes('Tuesday')}
+                                    onChange={handleDaysChange}
+                                    className="modal-button"
+                                    style={{ textAlign: 'left' }}
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Wednesday"
+                                    value="Wednesday"
+                                    checked={selectedDays.includes('Wednesday')}
+                                    onChange={handleDaysChange}
+                                    className="modal-button"
+                                    style={{ textAlign: 'left' }}
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Thursday"
+                                    value="Thursday"
+                                    checked={selectedDays.includes('Thursday')}
+                                    onChange={handleDaysChange}
+                                    className="modal-button"
+                                    style={{ textAlign: 'left' }}
+                                />
+                                <Form.Check
+                                    type="checkbox"
+                                    label="Friday"
+                                    value="Friday"
+                                    checked={selectedDays.includes('Friday')}
+                                    onChange={handleDaysChange}
+                                    className="modal-button"
+                                    style={{ textAlign: 'left' }}
+                                />
+                                </Col>
+                        </div>
                         </Col>
                     </Row>
                 </Col>
@@ -338,7 +427,9 @@ export default function ResidentialQuote({
             nameMessage={nameMessage}
             phoneNumberMessage={phoneNumberMessage}
             emailMessage={emailMessage}
+            contactMethodMessage={contactMethodMessage}
             frequencyMessage={frequencyMessage}
+            daysMessage={daysMessage}
             squareFootageMessage={squareFootageMessage}
             cleaningTypeMessage={cleaningTypeMessage}
         />
