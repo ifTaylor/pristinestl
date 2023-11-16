@@ -51,7 +51,6 @@ export default function CommercialQuote({
         setContactMethodMessage('');
     }
     if (selectedDays.length > 0) {
-        console.log(selectedDays);
         setDaysMessage(`Scheduled Days: ${selectedDays.join(', ')}`);
       } else {
         setDaysMessage('');

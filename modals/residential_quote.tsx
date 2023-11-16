@@ -49,7 +49,6 @@ export default function ResidentialQuote({
       setCleaningTypeMessage('');
     }
     if (selectedDays.length > 0) {
-        console.log(selectedDays);
         setDaysMessage(`on preferred days: ${selectedDays.join(', ')}.`);
       } else {
         setDaysMessage('');
