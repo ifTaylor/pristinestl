@@ -57,17 +57,18 @@ export default function CommercialQuote({
         setDaysMessage('');
     }
     
-    const previewContent = `"Commercial Quote:\n
-    ${companyNameMessage}\n
-    ${attentionMessage}\n
-    ${phoneNumberMessage}\n
-    ${emailMessage}\n
-    ${contactMethodMessage}\n
-    ${serviceTypeMessage}\n
-    ${facilityTypeMessage}\n
-    ${employeeCountMessage}\n
-    ${restroomCountMessage}\n
-    ${daysMessage}\n
+    const previewContent = `
+    "Commercial Quote:\n
+    ${companyNameMessage}
+    ${attentionMessage}
+    ${phoneNumberMessage}
+    ${emailMessage}
+    ${contactMethodMessage}
+    ${serviceTypeMessage}
+    ${facilityTypeMessage}
+    ${employeeCountMessage}
+    ${restroomCountMessage}
+    ${daysMessage}
     ${frequencyMessage}`;
     setMessagePreview(previewContent);
     
