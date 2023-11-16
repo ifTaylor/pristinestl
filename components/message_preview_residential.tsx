@@ -5,7 +5,9 @@ function MessagePreview({
   nameMessage,
   phoneNumberMessage,
   emailMessage,
+  contactMethodMessage,
   frequencyMessage,
+  daysMessage,
   squareFootageMessage,
   cleaningTypeMessage,
 }) {
@@ -17,7 +19,10 @@ function MessagePreview({
     <Card.Body>
         <Card.Title>Request for Quote</Card.Title>
         <Card.Text>
-        {`${nameMessage} ${phoneNumberMessage} ${emailMessage}\n${frequencyMessage} ${squareFootageMessage} ${cleaningTypeMessage}`}
+        {`${nameMessage} ${phoneNumberMessage} ${emailMessage} ${contactMethodMessage}`}<br />
+        </Card.Text>
+        <Card.Text>
+        {`${frequencyMessage} ${daysMessage} ${squareFootageMessage} ${cleaningTypeMessage}`}
         </Card.Text>
     </Card.Body>
     </Card>

@@ -133,6 +133,8 @@ export default function CommercialQuote({
     setRestroomCountMessage('');
     setFrequencyMessage('');
     setCleaningTypeMessage('');
+    setDaysMessage('');
+    setSelectedDays([]);
     onHide();
   };
 
