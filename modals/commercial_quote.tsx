@@ -33,7 +33,7 @@ export default function CommercialQuote({
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
-    companyName: '',
+    name: '',
     attention: '',
     phone: '',
     email: '',
@@ -111,7 +111,7 @@ export default function CommercialQuote({
   const handleCloseModal = () => {
     console.log("Made it here");
     setFormData({
-      companyName: '',
+      name: '',
       attention: '',
       phone: '',
       email: '',
@@ -184,7 +184,7 @@ export default function CommercialQuote({
     const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!formData.companyName || !formData.phone) {
+    if (!formData.name || !formData.phone) {
         alert('Name and Number are required fields.');
         return;
     }
@@ -237,9 +237,9 @@ export default function CommercialQuote({
                         id="company_name"
                         name="company_name"
                         required
-                        value={formData.companyName}
+                        value={formData.name}
                         onChange={(e) => {
-                        setFormData({ ...formData, companyName: e.target.value });
+                        setFormData({ ...formData, name: e.target.value });
                         updateCompanyName(e.target.value);
                         }}
                     />
