@@ -239,35 +239,6 @@ export default function ResidentialQuote({
                         }}
                     />
                     </div>
-                    <div className="list-padding center-content form-group">
-                        <Form.Label className="modal-label"><strong>Preferred Contact Method:</strong></Form.Label>
-                        <div className="center-content">
-                        <Form.Check
-                            type="checkbox"
-                            label="Phone"
-                            value="Phone"
-                            checked={selectedContactMethods.includes('Phone')}
-                            onChange={handleContactMethodChange}
-                            className="modal-button"
-                        />
-                        <div className="inline-padding"></div>
-                        <Form.Check
-                            type="checkbox"
-                            label="Email"
-                            value="Email"
-                            checked={selectedContactMethods.includes('Email')}
-                            onChange={handleContactMethodChange}
-                            className="modal-button"
-                        />
-                        <Form.Check
-                            type="checkbox"
-                            label="Text"
-                            value="Text"
-                            checked={selectedContactMethods.includes('Text')}
-                            onChange={handleContactMethodChange}
-                            className="modal-button"
-                        />
-                        </div>
                     </div>
                 </Col>
                 <Col className="service-info">
