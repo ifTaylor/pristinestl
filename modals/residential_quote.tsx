@@ -239,7 +239,6 @@ export default function ResidentialQuote({
                         }}
                     />
                     </div>
-                    </div>
                 </Col>
                 <Col className="service-info">
                     <Form.Label className="flex-center modal-subtitle"><strong>Service Information</strong></Form.Label>
